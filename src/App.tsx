@@ -12,13 +12,13 @@ export default function App() {
   };
 
   const handleAddGoal = () => {
-    const newGoal: CourseGoal = {
+    const newGoal: Omit<CourseGoal, "handleDeleteGoal"> = {
       id: Math.random(),
       title: "Learn React+ TS",
       description: "Learn it in depth",
     };
 
-    setGoals((prev) => [...prev, newGoal]);
+    setGoals((prev) => [...prev, newGoal as CourseGoal]);
   };
 
   return (
@@ -28,7 +28,7 @@ export default function App() {
           <h1>Your Course Goals</h1>
         </Header>
         <button onClick={handleAddGoal}>Add Goal</button>
-        <CourseGoalList onDelete={handleDeleteGoal} goals={goals} />
+        <CourseGoalList onDeleteGoal={handleDeleteGoal} goals={goals} />
       </main>
     </>
   );

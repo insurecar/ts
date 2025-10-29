@@ -10,14 +10,14 @@ export type CourseGoal = {
 
 export type CourseGoalListProps = {
   goals: CourseGoal[];
-  onDelete: (id: number) => void;
+  onDeleteGoal: (id: number) => void;
 };
 
-const CourseGoalList: FC<CourseGoalListProps> = ({ goals, onDelete }) => (
+const CourseGoalList: FC<CourseGoalListProps> = ({ goals, onDeleteGoal }) => (
   <ul>
     {goals.map(({ id, title, description }) => (
       <li key={id}>
-        <CourseGoal onDelete={onDelete} title={title} id={id}>
+        <CourseGoal onDelete={onDeleteGoal} title={title} id={id}>
           <p>{description}</p>
         </CourseGoal>
       </li>
