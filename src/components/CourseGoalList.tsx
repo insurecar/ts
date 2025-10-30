@@ -17,9 +17,7 @@ export type CourseGoalListProps = {
 const CourseGoalList: FC<CourseGoalListProps> = ({ goals, onDeleteGoal }) => {
   if (goals.length === 0) {
     return (
-      <InfoBox severity="low" mode="hint">
-        You have no goals yet. Start adding it!
-      </InfoBox>
+      <InfoBox mode="hint">You have no goals yet. Start adding it!</InfoBox>
     );
   }
 
@@ -27,7 +25,7 @@ const CourseGoalList: FC<CourseGoalListProps> = ({ goals, onDeleteGoal }) => {
 
   if (goals.length >= 4) {
     warningBox = (
-      <InfoBox severity="medium" mode="warning">
+      <InfoBox severity="high" mode="warning">
         You are collecting a lot of goals. Don't put much on your plate
       </InfoBox>
     );

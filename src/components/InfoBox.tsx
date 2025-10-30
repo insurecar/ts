@@ -1,20 +1,28 @@
 import { FC, ReactNode } from "react";
 
-type InfoBoxProps = {
-  mode: "hint" | "warning";
+type HintBoxProps = {
+  mode: "hint";
   children: ReactNode;
-  severity: "low" | "medium" | "high";
 };
 
-const InfoBox: FC<InfoBoxProps> = ({ mode, severity, children }) => {
-  if (mode === "hint") {
+type WarningBoxProps = {
+  mode: "warning";
+  severity: "low" | "medium" | "high";
+  children: ReactNode;
+};
+
+type InfoBoxProps = HintBoxProps | WarningBoxProps;
+
+const InfoBox: FC<InfoBoxProps> = (props) => {
+  if (props.mode === "hint") {
     return (
       <aside className="infobox infobox-hint">
-        <p>{children}</p>
+        <p>{props.children}</p>
       </aside>
     );
   }
 
+  const { severity, children } = props;
   return (
     <aside className={`infobox infobox-warning warning--${severity}`}>
       <h2>Warning</h2>
