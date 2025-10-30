@@ -1,6 +1,9 @@
-import { useRef, type FormEvent } from "react";
+import { FC, useRef, type FormEvent } from "react";
+type NewGoalProps = {
+  onAddGoal: (goal: string, summary: string) => void;
+};
 
-const NewGoal = () => {
+const NewGoal: FC<NewGoalProps> = ({ onAddGoal }) => {
   const goal = useRef<HTMLInputElement>(null);
   const summary = useRef<HTMLInputElement>(null);
 
@@ -9,6 +12,10 @@ const NewGoal = () => {
 
     const enteredGoal = goal.current!.value;
     const enteredSummary = goal.current!.value;
+
+    onAddGoal(enteredGoal, enteredSummary);
+
+    event.currentTarget.reset();
   };
 
   return (
